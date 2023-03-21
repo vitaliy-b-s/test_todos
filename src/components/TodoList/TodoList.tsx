@@ -1,11 +1,12 @@
 import styles from './todoList.module.css'
-import {mockdata} from "./mockdata";
 import deleteImg from '../../assets/images/delete.png';
 import editImg from '../../assets/images/edit.png';
 import {Button, Input, Modal} from 'antd';
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addToDo} from "../../actions/addTodo";
+import {selectTodos} from "../../selectors/selectTodos";
+import {formatDate} from "../../helpers/date/formatDate";
 
 export const TodoList = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -13,6 +14,8 @@ export const TodoList = () => {
     const [isEdit, setIsEdit] = useState<boolean>(false)
 
     const dispatch = useDispatch();
+
+    const todos = useSelector(selectTodos);
 
     const handleModalOpen = () => {
         setIsEdit(false);
@@ -22,7 +25,7 @@ export const TodoList = () => {
     const handleAddModal = () => {
         const newTodo = {
             id: `${todoText}_${new Date().toISOString()}`,
-            date: new Date().toISOString(),
+            date: formatDate(new Date()),
             description: todoText,
         }
 
@@ -32,8 +35,8 @@ export const TodoList = () => {
 
     return <div className={styles.container}>
         <span className={styles.list_title}>You have something to do here...</span>
-        <ul className={styles.list}>
-            {mockdata.map(item => {
+        {!!todos?.length && <ul className={styles.list}>
+            {todos?.map(item => {
                 return (
                     <li className={styles.item} key={item.id}>
                         <div className={styles.flex_column}>
@@ -47,7 +50,7 @@ export const TodoList = () => {
 
                     </li>)
             })}
-        </ul>
+        </ul>}
         <Modal
             title={isEdit ? "Edit todo" : "Add todo"}
             open={isModalOpen}

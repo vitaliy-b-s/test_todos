@@ -8,7 +8,8 @@
 .list {
     margin-top: 32px;
     padding: 16px;
-    max-width: 375px;
+    min-width: 375px;
+    width: 30%;
     max-height: 600px;
     list-style-type: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
@@ -62,5 +63,5 @@
     height: 50px;
     border-radius: 50%;
     font-size: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
