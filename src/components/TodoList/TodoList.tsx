@@ -1,6 +1,4 @@
 import styles from './todoList.module.css'
-import deleteImg from '../../assets/images/delete.png';
-import editImg from '../../assets/images/edit.png';
 import {Button, Input, Modal} from 'antd';
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
