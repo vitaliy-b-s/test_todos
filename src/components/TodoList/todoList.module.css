@@ -11,7 +11,7 @@
     max-width: 375px;
     max-height: 600px;
     list-style-type: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     overflow-y: auto;
 }
 
@@ -55,4 +55,12 @@
     margin-top: 8px;
     font-size: 0.8rem;
     color: #545050;
+}
+
+.add_button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
