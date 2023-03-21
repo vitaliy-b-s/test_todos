@@ -10,21 +10,31 @@ import {deleteTodo} from "../../actions/deleteTodo";
 import {ITodoItem} from "../../types/Models/TodoItem";
 import {editTodo} from "../../actions/editTodo";
 import {localStorageTodosKey} from "../../constants/localStorage";
+import {initializeApp} from "../../actions/initializeApp";
 
 export const TodoList = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [todoText, setTodoText] = useState<string>('')
     const [isEdit, setIsEdit] = useState<boolean>(false)
     const [idToEdit, setIdToEdit] = useState<string>('')
-    
+
     const dispatch = useDispatch();
 
     const todos = useSelector(selectTodos);
 
     useEffect(() => {
-        console.log(todos)
-        localStorage.setItem(localStorageTodosKey, JSON.stringify(todos));
+        if (todos && todos?.length > 0) {
+            localStorage.setItem(localStorageTodosKey, JSON.stringify(todos));
+        }
     }, [todos, dispatch])
+
+    useEffect(() => {
+        const todos = localStorage.getItem(localStorageTodosKey);
+        if (todos) {
+            const initialValue = JSON.parse(todos);
+            dispatch(initializeApp(initialValue))
+        }
+    }, [dispatch])
 
 
     const handleModalOpen = () => {
