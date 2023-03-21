@@ -3,6 +3,7 @@ import {ITodoItem} from "../types/Models/TodoItem";
 import {addToDo} from "../actions/addTodo";
 import {deleteTodo} from "../actions/deleteTodo";
 import {editTodo} from "../actions/editTodo";
+import {initializeApp} from "../actions/initializeApp";
 
 
 export interface ToDoState {
@@ -33,6 +34,12 @@ export const mainReducer = createReducer<ToDoState>({todos: []}, builder => {
         return {
             ...state,
             todos: arr,
+        }
+    });
+    builder.addCase(initializeApp, (state, {payload}) => {
+        return {
+            ...state,
+            todos: payload
         }
     });
 

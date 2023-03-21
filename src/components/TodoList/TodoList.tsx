@@ -1,6 +1,6 @@
 import styles from './todoList.module.css'
 import {Button, Input, Modal} from 'antd';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addToDo} from "../../actions/addTodo";
 import {selectTodos} from "../../selectors/selectTodos";
@@ -9,16 +9,23 @@ import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import {deleteTodo} from "../../actions/deleteTodo";
 import {ITodoItem} from "../../types/Models/TodoItem";
 import {editTodo} from "../../actions/editTodo";
+import {localStorageTodosKey} from "../../constants/localStorage";
 
 export const TodoList = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [todoText, setTodoText] = useState<string>('')
     const [isEdit, setIsEdit] = useState<boolean>(false)
     const [idToEdit, setIdToEdit] = useState<string>('')
-
+    
     const dispatch = useDispatch();
 
     const todos = useSelector(selectTodos);
+
+    useEffect(() => {
+        console.log(todos)
+        localStorage.setItem(localStorageTodosKey, JSON.stringify(todos));
+    }, [todos, dispatch])
+
 
     const handleModalOpen = () => {
         setIsEdit(false);

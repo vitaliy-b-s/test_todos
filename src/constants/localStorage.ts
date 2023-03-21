@@ -1,0 +1,1 @@
+export const localStorageTodosKey: string = 'todos'
