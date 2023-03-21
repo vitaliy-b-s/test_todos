@@ -1,7 +1,7 @@
 export const mockdata = [
     {
         id: "1",
-        description: 'To do something',
+        description: 'To do somethingTo do somethingTo do somethingTo do something',
         date: "today"
     }, {
         id: "2",

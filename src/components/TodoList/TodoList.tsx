@@ -5,18 +5,21 @@ import editImg from '../../assets/images/edit.png';
 
 export const TodoList = () => {
     return <div className={styles.container}>
-        <span>You have something to do...</span>
+        <span className={styles.list_title}>You have something to do here...</span>
         <ul className={styles.list}>
             {mockdata.map(item => {
-                return <li className={styles.item}>
-                    {item.description}
-                    {item.date}
-                    <div className={styles.image_container}>
-                        <img src={deleteImg} alt="delete"/>
-                        <img src={editImg} alt="edit"/>
-                    </div>
+                return (
+                    <li className={styles.item}>
+                        <div className={styles.flex_column}>
+                            {item.description}
+                            <span className={styles.date_description}>Last modified:{item.date} </span>
+                        </div>
+                        <div className={styles.image_container}>
+                            <img className={styles.icon_img} src={deleteImg} alt="delete"/>
+                            <img className={styles.icon_img} src={editImg} alt="edit"/>
+                        </div>
 
-                </li>
+                    </li>)
             })}
         </ul>
     </div>
