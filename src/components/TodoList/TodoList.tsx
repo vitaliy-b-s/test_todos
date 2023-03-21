@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToDo} from "../../actions/addTodo";
 import {selectTodos} from "../../selectors/selectTodos";
 import {formatDate} from "../../helpers/date/formatDate";
+import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 
 export const TodoList = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -44,8 +45,8 @@ export const TodoList = () => {
                             <span className={styles.date_description}>Last modified:{item.date} </span>
                         </div>
                         <div className={styles.image_container}>
-                            <img className={styles.icon_img} src={deleteImg} alt="delete"/>
-                            <img className={styles.icon_img} src={editImg} alt="edit"/>
+                            <EditOutlined className={styles.icon_img} size={30}/>
+                            <DeleteOutlined className={styles.icon_img} size={30}/>
                         </div>
 
                     </li>)

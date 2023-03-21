@@ -39,9 +39,8 @@
 
 
 .icon_img {
-    width: 20px;
-    height: 20px;
     cursor: pointer;
+    font-size: 1.4rem;
 }
 
 .icon_img:not(:last-child) {
